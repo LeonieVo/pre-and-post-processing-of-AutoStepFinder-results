@@ -7,26 +7,31 @@ clear all
 close all
 %% find all saved fitting results and CIs
 % put in the "parent folder" with all your experiments
-myFolder='Z:\_personalDATA\JS+LV_4F-TIRF\ArlJ_Moritz+Marie\**\';
-% myFolder='Z:\_personalDATA\JS+LV_4F-TIRF\ArlJ_Moritz+Marie\240603_ArlJ_Marie_AfvsPf\**\';
+myFolder='Z:\_personalDATA\JS+LV_4F-TIRF\003_project_ArlJ\**\';
+% myFolder='Z:\_personalDATA\JS+LV_4F-TIRF\003_project_ArlJ\240603_ArlJ_Marie_AfvsPf\**\';
 
 % get results from your saved fit results from the
-% Oligomers_distributionsAsBars.m code
-filePattern = fullfile(myFolder, '*ArlJ*Stepfinder*fitresu*.mat');
+% S3_OligomerDistribution.m code
+filePattern = fullfile(myFolder, '*ArlJ*Stepfinder*fitresu*.mat'); % all experiemnts
+%filePattern = fullfile(myFolder, '*ArlJ*Mg*Stepfinder*fitresu*.mat'); % only experiments with Mg2+
 theFiles = dir(filePattern);
 
 %CIs
 filePatternCI = fullfile(myFolder, '*ArlJ*Stepfinder*CI*.mat');
+%filePatternCI = fullfile(myFolder, '*ArlJ*Mg*Stepfinder*CI*.mat'); % only experiments with Mg2+
 theCIs = dir(filePatternCI);
 
 %filePatternhistBleach = fullfile(myFolder, '*noATP*histBleach.mat'); % Change to whatever pattern you need.
 filePatternhistBleach = fullfile(myFolder, '*ArlJ*histBleach.mat');
+%filePatternhistBleach = fullfile(myFolder, '*ArlJ*Mg*histBleach.mat');
 thehistBleachs = dir(filePatternhistBleach);
 
-% If you cant to delete some data (for example if you only want to plot 
+% If you want to delete some data (for example if you only want to plot 
 % selected experiments), best do it now in all acoording lists.
+% for example:
+% theFiles(10) = [];
 % theCIs(10) = [];
-% theCIs(8) = [];
+% thehistBleachs(10) = [];
 %% Load data
 % all fitresuls will be saven in "alle"
 for k =1 : length(theFiles)

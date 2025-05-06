@@ -5,7 +5,7 @@ twoColours =0 % put 1 if protein is labelled with two colors
 ifastxt = 0 % Change to 1, if you accidently saved the AutoStepfinder results as .txt instead of .m
 %% import data
 %put in Folder, where results from AutoStepfinder are stored:
-folderName='Z:\_personalDATA\JS+LV_4F-TIRF\ArlJ_Moritz+Marie\240806_PfArlI+AfArlJ_rep2\240806_Ana2_PfArlI+AfArlJ+ATP+Mg2+_BleachingSteps_individualtraces\StepFit_Result';
+folderName='Z:\_personalDATA\JS+LV_4F-TIRF\003_project_ArlJ\240806_PfArlI+AfArlJ_rep2\240806_Ana2_PfArlI+AfArlJ+ATP+Mg2+_BleachingSteps_individualtraces\StepFit_Result';
 header='06.08.24 AfArlJ + ATP + Mg2+ (200 nM PfArlI)'; % give a name
 %% get results from _properties.mat files
 filePattern = fullfile(folderName, '*properties*.mat'); % Change to whatever pattern you need.
@@ -76,7 +76,7 @@ DwellTimeCond_s=time(DwellTimeCond);
 howmanydel=[];
 for k = 1: length(StepFit_Results)
     % if shortest step is shorter than condition, this step is omitted
-    if min(StepFit_Results(k).DwellTimeStepBefore)<DwellTimeCond_s %DwellTimeCond
+    if min(StepFit_Results(k).DwellTimeStepBefore)<DwellTimeCond %DwellTimeCond
         StepFit_Results(k).NumSteps= StepFit_Results(k).NumSteps-1;
         howmanydel=[howmanydel,k];
     end

@@ -10,12 +10,15 @@ close all
 clear all
 %% load histBleachpercent
 % put in folder where Histograms are saved
-folder='Z:\_personalDATA\JS+LV_4F-TIRF\ArlJ_Moritz+Marie\240806_PfArlI+AfArlJ_rep2\240806_Ana2_PfArlI+AfArlJ+ATP+Mg2+_BleachingSteps_individualtraces\Histograms';
+folder='Z:\_personalDATA\JS+LV_4F-TIRF\003_project_ArlJ\240806_PfArlI+AfArlJ_rep2\240806_Ana2_PfArlI+AfArlJ+ATP+Mg2+_BleachingSteps_individualtraces\Histograms';
 cd(folder)
 a=dir('*_histBleachpercent.mat');%dir('*individualtraces_histBleachpercent.mat');
 load(a.name)
 % go back to folder where function sum6ar is:
-cd('Z:\_personalDATA\JS+LV_4F-TIRF\ArlJ_Moritz+Marie\Software')
+tmp = matlab.desktop.editor.getActive;
+cd(fileparts(tmp.Filename));
+% OR like this:
+% cd('C:\PutPathHere\GitHub\pre-and-post-processing-of-AutoStepFinder-results')
 %% Labelling Efficiency
 DOL=0.968; %put in labelling efficiency
 DOLstd=0.015; %put in standard deviation of labelling efficiency from measuring several times with the NanoDrop
@@ -70,8 +73,9 @@ SaveName=strcat(head,'_Stepfinder');
 save([SaveName,'_fitresu.mat'],'fitresuA'); 
 % save([SaveName,'_CI_f6.mat'],'CI_f6A'); 
 save([SaveName,'_CI_DOL.mat'],'CI_DOL'); 
-% go back to folder where functions are
-cd('Z:\_personalDATA\JS+LV_4F-TIRF\ArlJ_Moritz+Marie\Software')
+% go back to folder where function sum6ar is:
+tmp = matlab.desktop.editor.getActive;
+cd(fileparts(tmp.Filename));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %--------------------------
@@ -100,8 +104,9 @@ title(header)
 %% save as png
 cd(folder)
 saveas(gcf,[SaveName,'_bleachingsteps_relative.png'])
-% go back to folder where functions are
-cd('Z:\_personalDATA\JS+LV_4F-TIRF\Software\Nuno_Binompdfs')
+% go back to folder where function sum6ar is:
+tmp = matlab.desktop.editor.getActive;
+cd(fileparts(tmp.Filename));
 
 %% plot oligomersizes
 % Sometimes the renaming of the x axis labels has to be done by runing the code line
@@ -132,5 +137,6 @@ box on
 %% save as png
 cd(folder)
 saveas(gcf,[SaveName,'_OligomerSizes_relative.png'])
-% go back to folder where functions are
-cd('Z:\_personalDATA\JS+LV_4F-TIRF\ArlJ_Moritz+Marie\Software')
+% go back to folder where function sum6ar is:
+tmp = matlab.desktop.editor.getActive;
+cd(fileparts(tmp.Filename));
